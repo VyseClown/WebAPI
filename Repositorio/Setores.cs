@@ -22,6 +22,7 @@ namespace Repositorio
     
         public int id { get; set; }
         public string Nome { get; set; }
+        public Nullable<int> idTipoColeta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Produtos> Produtos { get; set; }

@@ -62,6 +62,9 @@
       <DependentUpon>ModelColeta.tt</DependentUpon>
     </Compile>
     <Compile Include="ColetasRepositorio.cs" />
+    <Compile Include="database_firewall_rules.cs">
+      <DependentUpon>ModelColeta.tt</DependentUpon>
+    </Compile>
     <Compile Include="Lista.cs">
       <DependentUpon>ModelColeta.tt</DependentUpon>
     </Compile>
@@ -106,40 +109,37 @@
     <Compile Include="Setores.cs">
       <DependentUpon>ModelColeta.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>ModelColeta.tt</DependentUpon>
-    </Compile>
     <Compile Include="TipoColeta.cs">
       <DependentUpon>ModelColeta.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="ModelColeta.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelColeta.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="ModelColeta.edmx.diagram">
       <DependentUpon>ModelColeta.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelColeta.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelColeta.Context.cs</LastGenOutput>
       <DependentUpon>ModelColeta.edmx</DependentUpon>
+      <LastGenOutput>ModelColeta.Context.cs</LastGenOutput>
     </Content>
     <Content Include="ModelColeta.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelColeta.edmx</DependentUpon>
       <LastGenOutput>ModelColeta.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,7 +23,7 @@ namespace Repositorio
     
         public int id { get; set; }
         public int idSetor { get; set; }
-        public int idMarca { get; set; }
+        public Nullable<int> idMarca { get; set; }
         public string Nome { get; set; }
         public string CodigoBarras { get; set; }
     

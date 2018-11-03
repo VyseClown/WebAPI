@@ -11,8 +11,8 @@ namespace Repositorio
         public Login logar(string login, string senha)
         {
             Login log = null;
-            using (dbColetaEntities db =
-                new dbColetaEntities())
+            using (dbAppEntities db =
+                new dbAppEntities())
             {
                 log = (from l in db.Login
                        where l.Login1 == login && l.Senha == senha

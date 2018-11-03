@@ -4,27 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3d4d4dc1069940a7a2600d9092bcaa13" Name="Diagram1">
-        <EntityTypeShape EntityType="dbColetaModel.Coleta" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbColetaModel.Lista" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbColetaModel.Marcas" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbColetaModel.Mercados" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbColetaModel.Produtos" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbColetaModel.ProdutosColeta" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbColetaModel.ProdutosLista" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbColetaModel.Setores" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbColetaModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbColetaModel.TipoColeta" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
-        <AssociationConnector Association="dbColetaModel.FK_Coleta_Lista" ManuallyRouted="false" />
-        <AssociationConnector Association="dbColetaModel.FK_Coleta_Mercados" ManuallyRouted="false" />
-        <AssociationConnector Association="dbColetaModel.FK_Coleta_TipoColeta" ManuallyRouted="false" />
-        <AssociationConnector Association="dbColetaModel.FK_ProdutosColeta_Coleta" ManuallyRouted="false" />
-        <AssociationConnector Association="dbColetaModel.FK_ProdutosLista_Lista" ManuallyRouted="false" />
-        <AssociationConnector Association="dbColetaModel.FK_Produtos_Marcas" ManuallyRouted="false" />
-        <AssociationConnector Association="dbColetaModel.FK_Produtos_Setores" ManuallyRouted="false" />
-        <AssociationConnector Association="dbColetaModel.FK_ProdutosColeta_Produtos" ManuallyRouted="false" />
-        <AssociationConnector Association="dbColetaModel.FK_ProdutosLista_Produtos" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="dbColetaModel.Login" Width="1.5" PointX="7.375" PointY="0.75" />
+      <Diagram DiagramId="91e36ad59dc74f03b7b0b5a36211c0e3" Name="Diagram1">
+        <EntityTypeShape EntityType="dbAppIPTModel.Coleta" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Lista" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Login" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Marcas" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Mercados" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Produtos" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAppIPTModel.ProdutosColeta" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAppIPTModel.ProdutosLista" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Setores" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAppIPTModel.TipoColeta" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAppIPTModel.database_firewall_rules" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="dbAppIPTModel.FK_Coleta_Lista" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAppIPTModel.FK_Coleta_Mercados" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAppIPTModel.FK_Coleta_TipoColeta" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAppIPTModel.FK_ProdutosColeta_Coleta" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAppIPTModel.FK_ProdutosLista_Lista" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAppIPTModel.FK_Produtos_Marcas" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAppIPTModel.FK_Produtos_Setores" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAppIPTModel.FK_ProdutosColeta_Produtos" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAppIPTModel.FK_ProdutosLista_Produtos" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -13,10 +13,10 @@ namespace Repositorio
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbColetaEntities : DbContext
+    public partial class dbAppEntities : DbContext
     {
-        public dbColetaEntities()
-            : base("name=dbColetaEntities")
+        public dbAppEntities()
+            : base("name=dbAppEntities")
         {
         }
     
@@ -27,14 +27,14 @@ namespace Repositorio
     
         public virtual DbSet<Coleta> Coleta { get; set; }
         public virtual DbSet<Lista> Lista { get; set; }
+        public virtual DbSet<Login> Login { get; set; }
         public virtual DbSet<Marcas> Marcas { get; set; }
         public virtual DbSet<Mercados> Mercados { get; set; }
         public virtual DbSet<Produtos> Produtos { get; set; }
         public virtual DbSet<ProdutosColeta> ProdutosColeta { get; set; }
         public virtual DbSet<ProdutosLista> ProdutosLista { get; set; }
         public virtual DbSet<Setores> Setores { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipoColeta> TipoColeta { get; set; }
-        public virtual DbSet<Login> Login { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

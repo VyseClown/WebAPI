@@ -10,6 +10,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
+
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class LoginController : ApiController
     {

@@ -18,7 +18,7 @@ namespace Repositorio
         public List<ProdutosRepositorio> listar()
         {
             List<ProdutosRepositorio> lista = null;
-            using (dbColetaEntities db = new dbColetaEntities())
+            using (dbAppEntities db = new dbAppEntities())
             {
                 lista = (from p in db.Produtos
                     join m in db.Marcas on p.idMarca equals m.id
@@ -26,6 +26,7 @@ namespace Repositorio
                          //orderby p.Nome
                     select new ProdutosRepositorio()
                     {
+                        Id = p.id,
                         Nome = p.Nome,
                         Marca = m.Nome,
                         Codigobarras = p.CodigoBarras,
@@ -37,7 +38,7 @@ namespace Repositorio
         public List<ProdutosRepositorio> ListarTipoLista(int idTipoLista)
         {
             List<ProdutosRepositorio> lista = null;
-            using (dbColetaEntities db = new dbColetaEntities())
+            using (dbAppEntities db = new dbAppEntities())
             {
                 lista = (from pl in db.ProdutosLista
                     join p in db.Produtos on pl.idProduto equals p.id
@@ -47,6 +48,7 @@ namespace Repositorio
                     where pl.idLista == idTipoLista 
                     select new ProdutosRepositorio()
                     {
+                        Id = p.id,
                         Nome = p.Nome,
                         Marca = m.Nome,
                         Codigobarras = p.CodigoBarras,
@@ -58,8 +60,8 @@ namespace Repositorio
         public ProdutosRepositorio GetProduto(int codigo)
         {
             ProdutosRepositorio pro = null;
-            using (dbColetaEntities db =
-                new dbColetaEntities())
+            using (dbAppEntities db =
+                new dbAppEntities())
             {
                 pro = (from p in db.Produtos
                     where p.id == codigo
@@ -67,6 +69,7 @@ namespace Repositorio
                     join s in db.Setores on p.idSetor equals s.id
                        select new ProdutosRepositorio()
                     {
+                           Id = p.id,
                         Nome = p.Nome,
                         Marca = m.Nome,
                         Codigobarras = p.CodigoBarras,
@@ -78,8 +81,8 @@ namespace Repositorio
         public ProdutosRepositorio GetProdutoBarras(string codigodebarras)
         {
             ProdutosRepositorio pro = null;
-            using (dbColetaEntities db =
-                new dbColetaEntities())
+            using (dbAppEntities db =
+                new dbAppEntities())
             {
                 pro = (from p in db.Produtos
                        where p.CodigoBarras == codigodebarras
@@ -98,8 +101,8 @@ namespace Repositorio
         public int GetMarcaID(string nome)
         {
             int pro;
-            using (dbColetaEntities db =
-                new dbColetaEntities())
+            using (dbAppEntities db =
+                new dbAppEntities())
             {
                 pro = (from p in db.Marcas
                     where p.Nome == nome
@@ -110,8 +113,8 @@ namespace Repositorio
         public int GetSetorID(string nome)
         {
             int pro;
-            using (dbColetaEntities db =
-                new dbColetaEntities())
+            using (dbAppEntities db =
+                new dbAppEntities())
             {
                 pro = (from p in db.Setores
                     where p.Nome == nome
@@ -121,8 +124,8 @@ namespace Repositorio
         }
         public void inserir(Produtos pro, List<int> idLista)//adicionar quais tipos de lista o produto vai entrar !
         {
-            using (dbColetaEntities db =
-                new dbColetaEntities())
+            using (dbAppEntities db =
+                new dbAppEntities())
             {
                 Produtos prod = new Produtos();
                 ProdutosLista prodlista = new ProdutosLista();

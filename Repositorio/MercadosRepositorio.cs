@@ -14,7 +14,7 @@ namespace Repositorio
         public List<MercadosRepositorio> listar()
         {
             List<MercadosRepositorio> lista = null;
-            using (dbColetaEntities db = new dbColetaEntities())
+            using (dbAppEntities db = new dbAppEntities())
             {
                 lista = (from p in db.Mercados
                     //orderby p.Nome
@@ -31,8 +31,8 @@ namespace Repositorio
         public MercadosRepositorio GetProduto(int codigo)
         {
             MercadosRepositorio pro = null;
-            using (dbColetaEntities db =
-                new dbColetaEntities())
+            using (dbAppEntities db =
+                new dbAppEntities())
             {
                 pro = (from p in db.Mercados
                     where p.id == codigo
@@ -47,8 +47,8 @@ namespace Repositorio
         }
         public void inserir(Mercados mer)
         {
-            using (dbColetaEntities db =
-                new dbColetaEntities())
+            using (dbAppEntities db =
+                new dbAppEntities())
             {
                 db.Mercados.Add(mer);
                 db.SaveChanges();

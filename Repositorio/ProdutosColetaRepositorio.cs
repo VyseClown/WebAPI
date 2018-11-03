@@ -17,7 +17,7 @@ namespace Repositorio
         public List<ProdutosRepositorio> listar(int idLista)
         {
             List<ProdutosRepositorio> lista = null;
-            using (dbColetaEntities db = new dbColetaEntities())
+            using (dbAppEntities db = new dbAppEntities())
             {
                 lista = (from p in db.Produtos
                     join m in db.Marcas on p.idMarca equals m.id
@@ -27,6 +27,7 @@ namespace Repositorio
                     //orderby p.Nome
                     select new ProdutosRepositorio()
                     {
+                        Id = p.id,
                         Nome = p.Nome,
                         Marca = m.Nome,
                         Codigobarras = p.CodigoBarras,

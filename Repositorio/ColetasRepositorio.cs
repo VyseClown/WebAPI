@@ -18,10 +18,10 @@ namespace Repositorio
         public string ResponsavelMercado { get; set; }
         public string ImgAssinatura { get; set; }
 
-        public void inserir(Coleta col, List<ProdutosColeta> pro, int idLista)
+        public void inserir(Coleta col, List<ProdutosColeta> pro)
         {
-            using (dbColetaEntities db =
-                new dbColetaEntities())
+            using (dbAppEntities db =
+                new dbAppEntities())
             {
                 Produtos prod = new Produtos();
                 ProdutosColeta prodlista = new ProdutosColeta();
@@ -43,7 +43,7 @@ namespace Repositorio
         public List<MercadosRepositorio> listar()
         {
             List<MercadosRepositorio> lista = null;
-            using (dbColetaEntities db = new dbColetaEntities())
+            using (dbAppEntities db = new dbAppEntities())
             {
                 lista = (from p in db.Mercados
                              //orderby p.Nome

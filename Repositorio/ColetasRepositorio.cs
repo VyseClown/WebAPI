@@ -16,7 +16,7 @@ namespace Repositorio
         public DateTime Data { get; set; }
         public string ResponsavelColeta { get; set; }
         public string ResponsavelMercado { get; set; }
-        public string ImgAssinatura { get; set; }
+        public string ImgAssinatura { get; set; }//brandão, me deixa tentar fazer a parte do plugin de codigo de barras que deve ser mais fácil
 
         public void inserir(Coleta col, List<ProdutosColeta> pro)
         {

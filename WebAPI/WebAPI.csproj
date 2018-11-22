@@ -137,6 +137,7 @@
     <Compile Include="Models\ColetasModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MercadosModel.cs" />
+    <Compile Include="Models\ProdutosAppModel.cs" />
     <Compile Include="Models\ProdutosColetaModel.cs" />
     <Compile Include="Models\ProdutosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

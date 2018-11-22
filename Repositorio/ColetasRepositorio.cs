@@ -40,6 +40,29 @@ namespace Repositorio
 
             }
         }
+        public void inserirApp(Coleta col, List<ProdutosColeta> pro)
+        {
+            using (dbAppEntities db =
+                new dbAppEntities())
+            {
+                Produtos prod = new Produtos();
+                ProdutosColeta prodlista = new ProdutosColeta();
+
+                db.Coleta.Add(col);
+                db.SaveChanges();
+                foreach (ProdutosColeta i in pro)
+                {
+                    i.idColeta = col.id;
+                    //prodlista.idColeta = col.id;
+                    //prodlista.idProduto = i.id;
+                    //prodlista.PrecoProduto = i.PrecoProduto;
+                    //prodlista.Status = i.Status;
+                    db.ProdutosColeta.Add(i);
+                    db.SaveChanges();
+                }
+
+            }
+        }
         public List<MercadosRepositorio> listar()
         {
             List<MercadosRepositorio> lista = null;

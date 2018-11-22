@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbAppIPTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dbAppIPTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Coleta">
           <Key>
             <PropertyRef Name="id" />
@@ -12,10 +12,10 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idMercado" Type="int" Nullable="false" />
           <Property Name="idTipoLista" Type="int" Nullable="false" />
-          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Data" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ResponsavelColeta" Type="varchar" MaxLength="100" />
           <Property Name="ResponsavelMercado" Type="varchar" MaxLength="100" />
-          <Property Name="ImgAssinatura" Type="varchar" MaxLength="50" />
+          <Property Name="ImgAssinatura" Type="text" />
         </EntityType>
         <EntityType Name="Lista">
           <Key>
@@ -275,115 +275,10 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
             <End Role="ProdutosLista" EntitySet="ProdutosLista" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbAppIPTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Coleta">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idMercado" Type="Int32" Nullable="false" />
-          <Property Name="idTipoLista" Type="Int32" Nullable="false" />
-          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ResponsavelColeta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ResponsavelMercado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ImgAssinatura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Lista" Relationship="Self.FK_Coleta_Lista" FromRole="Coleta" ToRole="Lista" />
-          <NavigationProperty Name="Mercados" Relationship="Self.FK_Coleta_Mercados" FromRole="Coleta" ToRole="Mercados" />
-          <NavigationProperty Name="TipoColeta" Relationship="Self.FK_Coleta_TipoColeta" FromRole="Coleta" ToRole="TipoColeta" />
-          <NavigationProperty Name="ProdutosColeta" Relationship="Self.FK_ProdutosColeta_Coleta" FromRole="Coleta" ToRole="ProdutosColeta" />
-        </EntityType>
-        <EntityType Name="Lista">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Coleta" Relationship="Self.FK_Coleta_Lista" FromRole="Lista" ToRole="Coleta" />
-          <NavigationProperty Name="ProdutosLista" Relationship="Self.FK_ProdutosLista_Lista" FromRole="Lista" ToRole="ProdutosLista" />
-        </EntityType>
-        <EntityType Name="Login">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Senha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Desativado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Marcas">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Produtos" Relationship="Self.FK_Produtos_Marcas" FromRole="Marcas" ToRole="Produtos" />
-        </EntityType>
-        <EntityType Name="Mercados">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Coleta" Relationship="Self.FK_Coleta_Mercados" FromRole="Mercados" ToRole="Coleta" />
-        </EntityType>
-        <EntityType Name="Produtos">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idSetor" Type="Int32" Nullable="false" />
-          <Property Name="idMarca" Type="Int32" />
-          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CodigoBarras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Marcas" Relationship="Self.FK_Produtos_Marcas" FromRole="Produtos" ToRole="Marcas" />
-          <NavigationProperty Name="Setores" Relationship="Self.FK_Produtos_Setores" FromRole="Produtos" ToRole="Setores" />
-          <NavigationProperty Name="ProdutosColeta" Relationship="Self.FK_ProdutosColeta_Produtos" FromRole="Produtos" ToRole="ProdutosColeta" />
-          <NavigationProperty Name="ProdutosLista" Relationship="Self.FK_ProdutosLista_Produtos" FromRole="Produtos" ToRole="ProdutosLista" />
-        </EntityType>
-        <EntityType Name="ProdutosColeta">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idColeta" Type="Int32" Nullable="false" />
-          <Property Name="idProduto" Type="Int32" Nullable="false" />
-          <Property Name="PrecoProduto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Coleta" Relationship="Self.FK_ProdutosColeta_Coleta" FromRole="ProdutosColeta" ToRole="Coleta" />
-          <NavigationProperty Name="Produtos" Relationship="Self.FK_ProdutosColeta_Produtos" FromRole="ProdutosColeta" ToRole="Produtos" />
-        </EntityType>
-        <EntityType Name="ProdutosLista">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idProduto" Type="Int32" />
-          <Property Name="idLista" Type="Int32" />
-          <NavigationProperty Name="Lista" Relationship="Self.FK_ProdutosLista_Lista" FromRole="ProdutosLista" ToRole="Lista" />
-          <NavigationProperty Name="Produtos" Relationship="Self.FK_ProdutosLista_Produtos" FromRole="ProdutosLista" ToRole="Produtos" />
-        </EntityType>
-        <EntityType Name="Setores">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idTipoColeta" Type="Int32" />
-          <NavigationProperty Name="Produtos" Relationship="Self.FK_Produtos_Setores" FromRole="Setores" ToRole="Produtos" />
-        </EntityType>
-        <EntityType Name="TipoColeta">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Coleta" Relationship="Self.FK_Coleta_TipoColeta" FromRole="TipoColeta" ToRole="Coleta" />
-        </EntityType>
         <EntityType Name="database_firewall_rules">
           <Key>
             <PropertyRef Name="id" />
@@ -400,9 +295,162 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
           <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityContainer Name="dbAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <EntitySet Name="Coleta" EntityType="dbAppIPTModel.Coleta" />
+          <EntitySet Name="Lista" EntityType="dbAppIPTModel.Lista" />
+          <EntitySet Name="Login" EntityType="dbAppIPTModel.Login" />
+          <EntitySet Name="Marcas" EntityType="dbAppIPTModel.Marcas" />
+          <EntitySet Name="Mercados" EntityType="dbAppIPTModel.Mercados" />
+          <EntitySet Name="Produtos" EntityType="dbAppIPTModel.Produtos" />
+          <EntitySet Name="ProdutosColeta" EntityType="dbAppIPTModel.ProdutosColeta" />
+          <EntitySet Name="ProdutosLista" EntityType="dbAppIPTModel.ProdutosLista" />
+          <EntitySet Name="Setores" EntityType="dbAppIPTModel.Setores" />
+          <EntitySet Name="TipoColeta" EntityType="dbAppIPTModel.TipoColeta" />
+          <AssociationSet Name="FK_Coleta_Lista" Association="dbAppIPTModel.FK_Coleta_Lista">
+            <End Role="Lista" EntitySet="Lista" />
+            <End Role="Coleta" EntitySet="Coleta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coleta_Mercados" Association="dbAppIPTModel.FK_Coleta_Mercados">
+            <End Role="Mercados" EntitySet="Mercados" />
+            <End Role="Coleta" EntitySet="Coleta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coleta_TipoColeta" Association="dbAppIPTModel.FK_Coleta_TipoColeta">
+            <End Role="TipoColeta" EntitySet="TipoColeta" />
+            <End Role="Coleta" EntitySet="Coleta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProdutosColeta_Coleta" Association="dbAppIPTModel.FK_ProdutosColeta_Coleta">
+            <End Role="Coleta" EntitySet="Coleta" />
+            <End Role="ProdutosColeta" EntitySet="ProdutosColeta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProdutosLista_Lista" Association="dbAppIPTModel.FK_ProdutosLista_Lista">
+            <End Role="Lista" EntitySet="Lista" />
+            <End Role="ProdutosLista" EntitySet="ProdutosLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produtos_Marcas" Association="dbAppIPTModel.FK_Produtos_Marcas">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Produtos" EntitySet="Produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produtos_Setores" Association="dbAppIPTModel.FK_Produtos_Setores">
+            <End Role="Setores" EntitySet="Setores" />
+            <End Role="Produtos" EntitySet="Produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProdutosColeta_Produtos" Association="dbAppIPTModel.FK_ProdutosColeta_Produtos">
+            <End Role="Produtos" EntitySet="Produtos" />
+            <End Role="ProdutosColeta" EntitySet="ProdutosColeta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProdutosLista_Produtos" Association="dbAppIPTModel.FK_ProdutosLista_Produtos">
+            <End Role="Produtos" EntitySet="Produtos" />
+            <End Role="ProdutosLista" EntitySet="ProdutosLista" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Coleta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idMercado" Type="Int32" Nullable="false" />
+          <Property Name="idTipoLista" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ResponsavelColeta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ResponsavelMercado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImgAssinatura" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Lista" Relationship="dbAppIPTModel.FK_Coleta_Lista" FromRole="Coleta" ToRole="Lista" />
+          <NavigationProperty Name="Mercados" Relationship="dbAppIPTModel.FK_Coleta_Mercados" FromRole="Coleta" ToRole="Mercados" />
+          <NavigationProperty Name="TipoColeta" Relationship="dbAppIPTModel.FK_Coleta_TipoColeta" FromRole="Coleta" ToRole="TipoColeta" />
+          <NavigationProperty Name="ProdutosColeta" Relationship="dbAppIPTModel.FK_ProdutosColeta_Coleta" FromRole="Coleta" ToRole="ProdutosColeta" />
+        </EntityType>
+        <EntityType Name="Lista">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Coleta" Relationship="dbAppIPTModel.FK_Coleta_Lista" FromRole="Lista" ToRole="Coleta" />
+          <NavigationProperty Name="ProdutosLista" Relationship="dbAppIPTModel.FK_ProdutosLista_Lista" FromRole="Lista" ToRole="ProdutosLista" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Senha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desativado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Produtos" Relationship="dbAppIPTModel.FK_Produtos_Marcas" FromRole="Marcas" ToRole="Produtos" />
+        </EntityType>
+        <EntityType Name="Mercados">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Coleta" Relationship="dbAppIPTModel.FK_Coleta_Mercados" FromRole="Mercados" ToRole="Coleta" />
+        </EntityType>
+        <EntityType Name="Produtos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSetor" Type="Int32" Nullable="false" />
+          <Property Name="idMarca" Type="Int32" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoBarras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Marcas" Relationship="dbAppIPTModel.FK_Produtos_Marcas" FromRole="Produtos" ToRole="Marcas" />
+          <NavigationProperty Name="Setores" Relationship="dbAppIPTModel.FK_Produtos_Setores" FromRole="Produtos" ToRole="Setores" />
+          <NavigationProperty Name="ProdutosColeta" Relationship="dbAppIPTModel.FK_ProdutosColeta_Produtos" FromRole="Produtos" ToRole="ProdutosColeta" />
+          <NavigationProperty Name="ProdutosLista" Relationship="dbAppIPTModel.FK_ProdutosLista_Produtos" FromRole="Produtos" ToRole="ProdutosLista" />
+        </EntityType>
+        <EntityType Name="ProdutosColeta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idColeta" Type="Int32" Nullable="false" />
+          <Property Name="idProduto" Type="Int32" Nullable="false" />
+          <Property Name="PrecoProduto" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Coleta" Relationship="dbAppIPTModel.FK_ProdutosColeta_Coleta" FromRole="ProdutosColeta" ToRole="Coleta" />
+          <NavigationProperty Name="Produtos" Relationship="dbAppIPTModel.FK_ProdutosColeta_Produtos" FromRole="ProdutosColeta" ToRole="Produtos" />
+        </EntityType>
+        <EntityType Name="ProdutosLista">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProduto" Type="Int32" />
+          <Property Name="idLista" Type="Int32" />
+          <NavigationProperty Name="Lista" Relationship="dbAppIPTModel.FK_ProdutosLista_Lista" FromRole="ProdutosLista" ToRole="Lista" />
+          <NavigationProperty Name="Produtos" Relationship="dbAppIPTModel.FK_ProdutosLista_Produtos" FromRole="ProdutosLista" ToRole="Produtos" />
+        </EntityType>
+        <EntityType Name="Setores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idTipoColeta" Type="Int32" />
+          <NavigationProperty Name="Produtos" Relationship="dbAppIPTModel.FK_Produtos_Setores" FromRole="Setores" ToRole="Produtos" />
+        </EntityType>
+        <EntityType Name="TipoColeta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Coleta" Relationship="dbAppIPTModel.FK_Coleta_TipoColeta" FromRole="TipoColeta" ToRole="Coleta" />
+        </EntityType>
         <Association Name="FK_Coleta_Lista">
-          <End Role="Lista" Type="Self.Lista" Multiplicity="1" />
-          <End Role="Coleta" Type="Self.Coleta" Multiplicity="*" />
+          <End Type="dbAppIPTModel.Lista" Role="Lista" Multiplicity="1" />
+          <End Type="dbAppIPTModel.Coleta" Role="Coleta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Lista">
               <PropertyRef Name="id" />
@@ -413,8 +461,8 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Coleta_Mercados">
-          <End Role="Mercados" Type="Self.Mercados" Multiplicity="1" />
-          <End Role="Coleta" Type="Self.Coleta" Multiplicity="*" />
+          <End Type="dbAppIPTModel.Mercados" Role="Mercados" Multiplicity="1" />
+          <End Type="dbAppIPTModel.Coleta" Role="Coleta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mercados">
               <PropertyRef Name="id" />
@@ -425,8 +473,8 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Coleta_TipoColeta">
-          <End Role="TipoColeta" Type="Self.TipoColeta" Multiplicity="1" />
-          <End Role="Coleta" Type="Self.Coleta" Multiplicity="*" />
+          <End Type="dbAppIPTModel.TipoColeta" Role="TipoColeta" Multiplicity="1" />
+          <End Type="dbAppIPTModel.Coleta" Role="Coleta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoColeta">
               <PropertyRef Name="id" />
@@ -437,8 +485,8 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProdutosColeta_Coleta">
-          <End Role="Coleta" Type="Self.Coleta" Multiplicity="1" />
-          <End Role="ProdutosColeta" Type="Self.ProdutosColeta" Multiplicity="*" />
+          <End Type="dbAppIPTModel.Coleta" Role="Coleta" Multiplicity="1" />
+          <End Type="dbAppIPTModel.ProdutosColeta" Role="ProdutosColeta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Coleta">
               <PropertyRef Name="id" />
@@ -449,8 +497,8 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProdutosLista_Lista">
-          <End Role="Lista" Type="Self.Lista" Multiplicity="0..1" />
-          <End Role="ProdutosLista" Type="Self.ProdutosLista" Multiplicity="*" />
+          <End Type="dbAppIPTModel.Lista" Role="Lista" Multiplicity="0..1" />
+          <End Type="dbAppIPTModel.ProdutosLista" Role="ProdutosLista" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Lista">
               <PropertyRef Name="id" />
@@ -461,8 +509,8 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Produtos_Marcas">
-          <End Role="Marcas" Type="Self.Marcas" Multiplicity="0..1" />
-          <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
+          <End Type="dbAppIPTModel.Marcas" Role="Marcas" Multiplicity="0..1" />
+          <End Type="dbAppIPTModel.Produtos" Role="Produtos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Marcas">
               <PropertyRef Name="id" />
@@ -473,8 +521,8 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Produtos_Setores">
-          <End Role="Setores" Type="Self.Setores" Multiplicity="1" />
-          <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
+          <End Type="dbAppIPTModel.Setores" Role="Setores" Multiplicity="1" />
+          <End Type="dbAppIPTModel.Produtos" Role="Produtos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Setores">
               <PropertyRef Name="id" />
@@ -485,8 +533,8 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProdutosColeta_Produtos">
-          <End Role="Produtos" Type="Self.Produtos" Multiplicity="1" />
-          <End Role="ProdutosColeta" Type="Self.ProdutosColeta" Multiplicity="*" />
+          <End Type="dbAppIPTModel.Produtos" Role="Produtos" Multiplicity="1" />
+          <End Type="dbAppIPTModel.ProdutosColeta" Role="ProdutosColeta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Produtos">
               <PropertyRef Name="id" />
@@ -497,8 +545,8 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProdutosLista_Produtos">
-          <End Role="Produtos" Type="Self.Produtos" Multiplicity="0..1" />
-          <End Role="ProdutosLista" Type="Self.ProdutosLista" Multiplicity="*" />
+          <End Type="dbAppIPTModel.Produtos" Role="Produtos" Multiplicity="0..1" />
+          <End Type="dbAppIPTModel.ProdutosLista" Role="ProdutosLista" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Produtos">
               <PropertyRef Name="id" />
@@ -508,157 +556,12 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbAppEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Coleta" EntityType="Self.Coleta" />
-          <EntitySet Name="Lista" EntityType="Self.Lista" />
-          <EntitySet Name="Login" EntityType="Self.Login" />
-          <EntitySet Name="Marcas" EntityType="Self.Marcas" />
-          <EntitySet Name="Mercados" EntityType="Self.Mercados" />
-          <EntitySet Name="Produtos" EntityType="Self.Produtos" />
-          <EntitySet Name="ProdutosColeta" EntityType="Self.ProdutosColeta" />
-          <EntitySet Name="ProdutosLista" EntityType="Self.ProdutosLista" />
-          <EntitySet Name="Setores" EntityType="Self.Setores" />
-          <EntitySet Name="TipoColeta" EntityType="Self.TipoColeta" />
-          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
-          <AssociationSet Name="FK_Coleta_Lista" Association="Self.FK_Coleta_Lista">
-            <End Role="Lista" EntitySet="Lista" />
-            <End Role="Coleta" EntitySet="Coleta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Coleta_Mercados" Association="Self.FK_Coleta_Mercados">
-            <End Role="Mercados" EntitySet="Mercados" />
-            <End Role="Coleta" EntitySet="Coleta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Coleta_TipoColeta" Association="Self.FK_Coleta_TipoColeta">
-            <End Role="TipoColeta" EntitySet="TipoColeta" />
-            <End Role="Coleta" EntitySet="Coleta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProdutosColeta_Coleta" Association="Self.FK_ProdutosColeta_Coleta">
-            <End Role="Coleta" EntitySet="Coleta" />
-            <End Role="ProdutosColeta" EntitySet="ProdutosColeta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProdutosLista_Lista" Association="Self.FK_ProdutosLista_Lista">
-            <End Role="Lista" EntitySet="Lista" />
-            <End Role="ProdutosLista" EntitySet="ProdutosLista" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Produtos_Marcas" Association="Self.FK_Produtos_Marcas">
-            <End Role="Marcas" EntitySet="Marcas" />
-            <End Role="Produtos" EntitySet="Produtos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Produtos_Setores" Association="Self.FK_Produtos_Setores">
-            <End Role="Setores" EntitySet="Setores" />
-            <End Role="Produtos" EntitySet="Produtos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProdutosColeta_Produtos" Association="Self.FK_ProdutosColeta_Produtos">
-            <End Role="Produtos" EntitySet="Produtos" />
-            <End Role="ProdutosColeta" EntitySet="ProdutosColeta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProdutosLista_Produtos" Association="Self.FK_ProdutosLista_Produtos">
-            <End Role="Produtos" EntitySet="Produtos" />
-            <End Role="ProdutosLista" EntitySet="ProdutosLista" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="dbAppIPTModelStoreContainer" CdmEntityContainer="dbAppEntities">
-          <EntitySetMapping Name="Coleta">
-            <EntityTypeMapping TypeName="dbAppIPTModel.Coleta">
-              <MappingFragment StoreEntitySet="Coleta">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idMercado" ColumnName="idMercado" />
-                <ScalarProperty Name="idTipoLista" ColumnName="idTipoLista" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="ResponsavelColeta" ColumnName="ResponsavelColeta" />
-                <ScalarProperty Name="ResponsavelMercado" ColumnName="ResponsavelMercado" />
-                <ScalarProperty Name="ImgAssinatura" ColumnName="ImgAssinatura" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Lista">
-            <EntityTypeMapping TypeName="dbAppIPTModel.Lista">
-              <MappingFragment StoreEntitySet="Lista">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Login">
-            <EntityTypeMapping TypeName="dbAppIPTModel.Login">
-              <MappingFragment StoreEntitySet="Login">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Login1" ColumnName="Login" />
-                <ScalarProperty Name="Senha" ColumnName="Senha" />
-                <ScalarProperty Name="Desativado" ColumnName="Desativado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Marcas">
-            <EntityTypeMapping TypeName="dbAppIPTModel.Marcas">
-              <MappingFragment StoreEntitySet="Marcas">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Mercados">
-            <EntityTypeMapping TypeName="dbAppIPTModel.Mercados">
-              <MappingFragment StoreEntitySet="Mercados">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Produtos">
-            <EntityTypeMapping TypeName="dbAppIPTModel.Produtos">
-              <MappingFragment StoreEntitySet="Produtos">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idSetor" ColumnName="idSetor" />
-                <ScalarProperty Name="idMarca" ColumnName="idMarca" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="CodigoBarras" ColumnName="CodigoBarras" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProdutosColeta">
-            <EntityTypeMapping TypeName="dbAppIPTModel.ProdutosColeta">
-              <MappingFragment StoreEntitySet="ProdutosColeta">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idColeta" ColumnName="idColeta" />
-                <ScalarProperty Name="idProduto" ColumnName="idProduto" />
-                <ScalarProperty Name="PrecoProduto" ColumnName="PrecoProduto" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProdutosLista">
-            <EntityTypeMapping TypeName="dbAppIPTModel.ProdutosLista">
-              <MappingFragment StoreEntitySet="ProdutosLista">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idProduto" ColumnName="idProduto" />
-                <ScalarProperty Name="idLista" ColumnName="idLista" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Setores">
-            <EntityTypeMapping TypeName="dbAppIPTModel.Setores">
-              <MappingFragment StoreEntitySet="Setores">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="idTipoColeta" ColumnName="idTipoColeta" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoColeta">
-            <EntityTypeMapping TypeName="dbAppIPTModel.TipoColeta">
-              <MappingFragment StoreEntitySet="TipoColeta">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="database_firewall_rules">
             <EntityTypeMapping TypeName="dbAppIPTModel.database_firewall_rules">
               <MappingFragment StoreEntitySet="database_firewall_rules">
@@ -668,6 +571,102 @@ warning 6002: The table/view 'dbAppIPT.sys.database_firewall_rules' does not hav
                 <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
                 <ScalarProperty Name="create_date" ColumnName="create_date" />
                 <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coleta">
+            <EntityTypeMapping TypeName="dbAppIPTModel.Coleta">
+              <MappingFragment StoreEntitySet="Coleta">
+                <ScalarProperty Name="ImgAssinatura" ColumnName="ImgAssinatura" />
+                <ScalarProperty Name="ResponsavelMercado" ColumnName="ResponsavelMercado" />
+                <ScalarProperty Name="ResponsavelColeta" ColumnName="ResponsavelColeta" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="idTipoLista" ColumnName="idTipoLista" />
+                <ScalarProperty Name="idMercado" ColumnName="idMercado" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lista">
+            <EntityTypeMapping TypeName="dbAppIPTModel.Lista">
+              <MappingFragment StoreEntitySet="Lista">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Login">
+            <EntityTypeMapping TypeName="dbAppIPTModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Desativado" ColumnName="Desativado" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Login1" ColumnName="Login" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="dbAppIPTModel.Marcas">
+              <MappingFragment StoreEntitySet="Marcas">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mercados">
+            <EntityTypeMapping TypeName="dbAppIPTModel.Mercados">
+              <MappingFragment StoreEntitySet="Mercados">
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produtos">
+            <EntityTypeMapping TypeName="dbAppIPTModel.Produtos">
+              <MappingFragment StoreEntitySet="Produtos">
+                <ScalarProperty Name="CodigoBarras" ColumnName="CodigoBarras" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+                <ScalarProperty Name="idSetor" ColumnName="idSetor" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProdutosColeta">
+            <EntityTypeMapping TypeName="dbAppIPTModel.ProdutosColeta">
+              <MappingFragment StoreEntitySet="ProdutosColeta">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PrecoProduto" ColumnName="PrecoProduto" />
+                <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+                <ScalarProperty Name="idColeta" ColumnName="idColeta" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProdutosLista">
+            <EntityTypeMapping TypeName="dbAppIPTModel.ProdutosLista">
+              <MappingFragment StoreEntitySet="ProdutosLista">
+                <ScalarProperty Name="idLista" ColumnName="idLista" />
+                <ScalarProperty Name="idProduto" ColumnName="idProduto" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Setores">
+            <EntityTypeMapping TypeName="dbAppIPTModel.Setores">
+              <MappingFragment StoreEntitySet="Setores">
+                <ScalarProperty Name="idTipoColeta" ColumnName="idTipoColeta" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoColeta">
+            <EntityTypeMapping TypeName="dbAppIPTModel.TipoColeta">
+              <MappingFragment StoreEntitySet="TipoColeta">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

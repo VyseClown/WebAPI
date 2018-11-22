@@ -23,7 +23,7 @@ namespace Repositorio
         public int id { get; set; }
         public int idMercado { get; set; }
         public int idTipoLista { get; set; }
-        public System.DateTime Data { get; set; }
+        public string Data { get; set; }
         public string ResponsavelColeta { get; set; }
         public string ResponsavelMercado { get; set; }
         public string ImgAssinatura { get; set; }

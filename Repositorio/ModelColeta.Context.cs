@@ -25,6 +25,7 @@ namespace Repositorio
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
         public virtual DbSet<Coleta> Coleta { get; set; }
         public virtual DbSet<Lista> Lista { get; set; }
         public virtual DbSet<Login> Login { get; set; }
@@ -35,6 +36,5 @@ namespace Repositorio
         public virtual DbSet<ProdutosLista> ProdutosLista { get; set; }
         public virtual DbSet<Setores> Setores { get; set; }
         public virtual DbSet<TipoColeta> TipoColeta { get; set; }
-        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

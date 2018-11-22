@@ -28,10 +28,11 @@ namespace WebAPI.Controllers
         {
             //Coleta cole = AutoMapper.Mapper.Map<ColetasModel, Coleta>(col);
             //(new ColetasRepositorio()).inserir(cole, prod);
+            ColetasRepositorio colrep = new ColetasRepositorio();
             ProdutosAppModel produto = new ProdutosAppModel();
-            ProdutosColeta listaProdutos = new ProdutosColeta();
+            List<ProdutosColeta> listaProdutos = new List<ProdutosColeta>();
             produto = prod.First();
-            new Coleta {
+            Coleta col = new Coleta {
                 idMercado = produto.MercadoID,
                 idTipoLista = 1,
                 Data = produto.Data,
@@ -39,14 +40,26 @@ namespace WebAPI.Controllers
             };
             foreach (ProdutosAppModel item in prod)
             {
-                new ProdutosColeta
+                ProdutosColeta produ = new ProdutosColeta
                 {
                     idProduto = produto.Pid,
                     PrecoProduto = produto.Preco,//no metodo de inserir vamos ter que colocar o id da coleta em cada produto
+                    
                 };
+                listaProdutos.Add(produ);
             }
-            
+
+            colrep.inserirApp(col, listaProdutos);
             //(new ColetasRepositorio).inserir()
+
+        }
+        [HttpPost]
+        [AcceptVerbs("POST")]
+        public string UploadCustomerImage()
+        {
+            string mensagem = "oi";
+            return mensagem;
+
 
         }
 

@@ -5,17 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="91e36ad59dc74f03b7b0b5a36211c0e3" Name="Diagram1">
-        <EntityTypeShape EntityType="dbAppIPTModel.database_firewall_rules" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbAppIPTModel.Coleta" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="dbAppIPTModel.Lista" Width="1.5" PointX="0.75" PointY="3.875" />
-        <EntityTypeShape EntityType="dbAppIPTModel.Login" Width="1.5" PointX="7.75" PointY="7.5" />
-        <EntityTypeShape EntityType="dbAppIPTModel.Marcas" Width="1.5" PointX="0.75" PointY="9.5" />
-        <EntityTypeShape EntityType="dbAppIPTModel.Mercados" Width="1.5" PointX="0.75" PointY="12.375" />
-        <EntityTypeShape EntityType="dbAppIPTModel.Produtos" Width="1.5" PointX="3" PointY="9" />
-        <EntityTypeShape EntityType="dbAppIPTModel.ProdutosColeta" Width="1.5" PointX="5.25" PointY="6.125" />
-        <EntityTypeShape EntityType="dbAppIPTModel.ProdutosLista" Width="1.5" PointX="5.25" PointY="9.375" />
-        <EntityTypeShape EntityType="dbAppIPTModel.Setores" Width="1.5" PointX="0.75" PointY="6.375" />
-        <EntityTypeShape EntityType="dbAppIPTModel.TipoColeta" Width="1.5" PointX="0.75" PointY="14.875" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Coleta" Width="1.5" PointX="3" PointY="11.125" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Lista" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Login" Width="1.5" PointX="5.75" PointY="6.875" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Marcas" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Mercados" Width="1.5" PointX="0.75" PointY="10.625" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Produtos" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="dbAppIPTModel.ProdutosColeta" Width="1.5" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="dbAppIPTModel.ProdutosLista" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="dbAppIPTModel.Setores" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="dbAppIPTModel.TipoColeta" Width="1.5" PointX="0.75" PointY="13.25" />
         <AssociationConnector Association="dbAppIPTModel.FK_Coleta_Lista" />
         <AssociationConnector Association="dbAppIPTModel.FK_Coleta_Mercados" />
         <AssociationConnector Association="dbAppIPTModel.FK_Coleta_TipoColeta" />

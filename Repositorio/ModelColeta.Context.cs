@@ -25,7 +25,6 @@ namespace Repositorio
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
         public virtual DbSet<Coleta> Coleta { get; set; }
         public virtual DbSet<Lista> Lista { get; set; }
         public virtual DbSet<Login> Login { get; set; }

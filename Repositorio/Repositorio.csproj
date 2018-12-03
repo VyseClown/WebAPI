@@ -62,9 +62,6 @@
       <DependentUpon>ModelColeta.tt</DependentUpon>
     </Compile>
     <Compile Include="ColetasRepositorio.cs" />
-    <Compile Include="database_firewall_rules.cs">
-      <DependentUpon>ModelColeta.tt</DependentUpon>
-    </Compile>
     <Compile Include="Lista.cs">
       <DependentUpon>ModelColeta.tt</DependentUpon>
     </Compile>
